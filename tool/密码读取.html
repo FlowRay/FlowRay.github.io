@@ -1,34 +1,249 @@
-include mixins
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://flowray.top/warn.html">
+<![endif]-->
+<meta charset="utf-8">
 
-extends partial/layout
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://flowray.top">
+<meta name="author" content="千夜">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
 
-block site_title
-    != page.title + " · " + config.title
+<link rel="shortcut icon" href="/images/sitetitle.jpg">
 
-block description
-    - var desc = page.desc || strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150);
-    meta(name="description", content=desc)
 
-block content
-  .autopagerize_page_element: .content: .post-page
-    include mixins
-    +make_post(page, true)
-    .share
-      .evernote
-        a.fa.fa-bookmark(href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();", ref="nofollow", target="_blank")
-      .weibo
-        a.fa.fa-weibo(href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&title=',e(d.title),'&appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));")
-      .twitter
-        a.fa.fa-twitter(href=url_for("http://twitter.com/home?status="+","+config.url+"/"+page.path+","+config.title+","+page.title+",;"))
-    - var prev = page.prev ? page.prev.path : false;
-    - var next = page.next ? page.next.path : false;
-    .pagination
-      ul.clearfix
-        if prev
-          li.pre.pagbuttons
-            a.btn(role="navigation",href=url_for(prev), title=page.prev.title)!= __('prev_post')
-        if next
-          li.next.pagbuttons
-            a.btn(role="navigation",href=url_for(next), title=page.next.title)!= __('next_post')
-    if page.comments
-        include partial/comments
+<title>常用密码读取工具 - 千夜</title>
+
+<meta name="keywords" content="密码读取工具">
+
+<meta name="description " content="常用的密码读取工具">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="夜">夜</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/links" title="链接">
+            <i class="fa fa-link"></i>
+            <span>链接</span>
+        </a>
+        
+        
+        <a href="/about" title="关于">
+            <i class="fa fa-user"></i>
+            <span>关于</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-weixin-mp" href="javascript:"><i class="fa fa-weixin"></i></a>
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">千夜</h1>
+        <h3 class="cover-siteTitle">长路漫漫，踏歌而行</h3>
+        <p class="cover-siteDesc"></p>
+        <div class="cover-sns">
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="">
+                    <a href="/categories/secure" data-name="安全">安全</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/program" data-name="编程">编程</a>
+                </li>
+            
+                <li class="active">
+                    <a href="/categories/tool" data-name="工具">工具</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/readThink" data-name="读思">读思</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="flowray.top" target="_blank">
+                    <img width="48" src="/images/sitehead.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="flowray.top" target="_blank">千夜</a>
+                    <span title="最后编辑于2017-09-29">2017-09-29</span>
+                </p>
+                <p>长路漫漫，踏歌而行</p>
+            </div>
+            <h2 class="post-title">常用密码读取工具</h2>
+            <div class="post-meta">
+                本文总共548个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在安全测试的过程中，读取已被控制的主机的密码十分有用，所以总结一下。</p>
+<p>这两个网页的工具非常有用：</p>
+<p><a href="http://securityxploded.com/password-dump-tools.php">http://securityxploded.com/password-dump-tools.php</a></p>
+<p><a href="http://www.nirsoft.net/">http://www.nirsoft.net/</a></p>
+<hr>
+<h4 id="1-Windows密码抓取神器-mimikatz"><a href="#1-Windows密码抓取神器-mimikatz" class="headerlink" title="1. Windows密码抓取神器 mimikatz"></a>1. Windows密码抓取神器 mimikatz</h4><p>一个轻量级的调试器，可以帮助安全人员抓取Windows密码，缺点是需要管理员权限。mimikatz可以结合metasploit获得域控服务器的密码。<a href="http://blog.csdn.net/pyphrb/article/details/52051321">点击查看</a></p>
+<p><a href="https://github.com/gentilkiwi/mimikatz/releases/latest">官网地址</a></p>
+<a id="more"></a>
+<h4 id="2-系统综合密码读取-LaZagne"><a href="#2-系统综合密码读取-LaZagne" class="headerlink" title="2. 系统综合密码读取 LaZagne"></a>2. 系统综合密码读取 LaZagne</h4><p>LaZagne是一个开源的检查本地计算机的密码的工具。</p>
+<p><a href="https://github.com/AlessandroZ/LaZagne">官网地址</a></p>
+<h4 id="3-浏览器密码获取-BrowserPasswordDump"><a href="#3-浏览器密码获取-BrowserPasswordDump" class="headerlink" title="3. 浏览器密码获取  BrowserPasswordDump"></a>3. 浏览器密码获取  BrowserPasswordDump</h4><p>BrowserPasswordDump可以浏览多种浏览器的密码记录。<br><a href="http://securityxploded.com/browser-password-dump.php">官方地址</a></p>
+<h4 id="4-windows-网络密码-NetworkPasswordRecovery"><a href="#4-windows-网络密码-NetworkPasswordRecovery" class="headerlink" title="4. windows 网络密码 NetworkPasswordRecovery"></a>4. windows 网络密码 NetworkPasswordRecovery</h4><p>最好下载X86和X64两个版本的。<br><a href="http://www.nirsoft.net/utils/network_password_recovery.html">官网地址</a></p>
+<h4 id="5-邮件客户端密码-Email-Password-Dump"><a href="#5-邮件客户端密码-Email-Password-Dump" class="headerlink" title="5. 邮件客户端密码  Email Password Dump"></a>5. 邮件客户端密码  Email Password Dump</h4><p>支持多种邮件客户端。<br><a href="http://securityxploded.com/email-password-dump.php">官网链接</a></p>
+<h4 id="6-注册表密码查看"><a href="#6-注册表密码查看" class="headerlink" title="6. 注册表密码查看"></a>6. 注册表密码查看</h4><p><code>REG query HKCU  /v &quot;pwd&quot; /s  #pwd可替换为password \ HKCU 可替换为HKCR</code></p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/密码读取工具/">密码读取工具</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文若有不恰当之处，望不吝赐教</p>
+    
+    
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '08/15/2017',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            wxMpImg: '/images/weixin-mp.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>
