@@ -1,253 +1,34 @@
-<!DOCTYPE HTML>
-<html class="no-js" lang="zh-CN">
-<!--
-//                            _ooOoo_
-//                           o8888888o
-//                           88" . "88
-//                           (| -_- |)
-//                            O\ = /O
-//                        ____/`---'\____
-//                      .   ' \\| |// `.
-//                       / \\||| : |||// \
-//                     / _||||| -:- |||||- \
-//                       | | \\\ - /// | |
-//                     | \_| ''\---/'' | |
-//                      \ .-\__ `-` ___/-. /
-//                   ___`. .' /--.--\ `. . __
-//                ."" '< `.___\_<|>_/___.' >'"".
-//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
-//                 \ \ `-. \_ __\ /__ _/ .-` / /
-//         ======`-.____`-.___\_____/___.-`____.-'======
-//                            `=---='
-//                 拦截插件累计拦截逗比攻击"1381438"次！
-//         .............................................
-//                  佛祖保佑             永无BUG
-//          佛曰:
-//                  写字楼里写字间，写字间里程序员；
-//                  程序人员写程序，又拿程序换酒钱。
-//                  酒醒只在网上坐，酒醉还来网下眠；
-//                  酒醉酒醒日复日，网上网下年复年。
-//                  但愿老死电脑间，不愿鞠躬老板前；
-//                  奔驰宝马贵者趣，公交自行程序员。
-//                  别人笑我忒疯癫，我笑自己命太贱；
-//                  不见满街漂亮妹，哪个归得程序员？
--->
-<head>
-    <!--[if lte IE 9]>
-<meta http-equiv="refresh" content="0;url=http://flowray.top/warn.html">
-<![endif]-->
-<meta charset="utf-8">
+include mixins
 
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
-<meta http-equiv="mobile-agent" content="format=html5; url=http://flowray.top">
-<meta name="author" content="千夜">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+extends partial/layout
 
-<link rel="shortcut icon" href="/images/sitetitle.jpg">
+block site_title
+    != page.title + " · " + config.title
 
+block description
+    - var desc = page.desc || strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150);
+    meta(name="description", content=desc)
 
-<title>常见源码泄露 - 千夜</title>
-
-<meta name="keywords" content="常见源码泄露">
-
-<meta name="description " content="常见源码泄露">
-</head>
-<body>
-<div id="nav">
-    <nav class="nav-menu">
-        <a class="site-name current" href="/" title="夜">夜</a>
-        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
-        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
-        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
-        <!-- custom single page of menus -->
-        
-        
-        <a href="/links" title="链接">
-            <i class="fa fa-link"></i>
-            <span>链接</span>
-        </a>
-        
-        
-        <a href="/about" title="关于">
-            <i class="fa fa-user"></i>
-            <span>关于</span>
-        </a>
-        
-    </nav>
-</div>
-
-<div class="nav-user">
-    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
-    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
-    <a class="btn-weixin-mp" href="javascript:"><i class="fa fa-weixin"></i></a>
-</div>
-<div id="wrapper" class="clearfix">
-    <div id="body">
-        <div class="main" id="main">
-            <div id="cover">
-    <div class="cover-img"></div>
-    <div class="cover-info">
-        
-        <h1 class="cover-siteName">千夜</h1>
-        <h3 class="cover-siteTitle">长路漫漫，踏歌而行</h3>
-        <p class="cover-siteDesc"></p>
-        <div class="cover-sns">
-            
-        </div>
-    </div>
-</div>
-            <div class="page-title">
-    <ul>
-        <li><a href="/">最新</a></li>
-        
-            
-                <li class="active">
-                    <a href="/categories/secure" data-name="安全">安全</a>
-                </li>
-            
-                <li class="">
-                    <a href="/categories/program" data-name="编程">编程</a>
-                </li>
-            
-                <li class="">
-                    <a href="/categories/tool" data-name="工具">工具</a>
-                </li>
-            
-                <li class="">
-                    <a href="/categories/readThink" data-name="读思">读思</a>
-                </li>
-            
-        
-        <li class="page-search">
-    <form id="search" class="search-form">
-        <label for="s" class="sr-only">请输入关键字</label>
-        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
-        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-</li>
-
-    </ul>
-</div>
-<div class="main-inner">
-    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-        <div class="post-header">
-            <div class="post-author clearfix">
-                <a class="avatar fleft" href="flowray.top" target="_blank">
-                    <img width="48" src="/images/sitehead.jpg" alt="avatar"/>
-                </a>
-                <p><span class="label">作者</span>
-                    <a href="flowray.top" target="_blank">千夜</a>
-                    <span title="最后编辑于2017-09-29">2017-09-29</span>
-                </p>
-                <p>长路漫漫，踏歌而行</p>
-            </div>
-            <h2 class="post-title">常见源码泄露</h2>
-            <div class="post-meta">
-                本文总共946个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
-            </div>
-        </div>
-        <div class="post-content markdown-body">
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>由于开发人员的疏忽，可以见到源码泄露问题。总结一下源码泄露问题。</p>
-<h3 id="源码泄露分类"><a href="#源码泄露分类" class="headerlink" title="源码泄露分类"></a>源码泄露分类</h3><h4 id="hg源码泄露"><a href="#hg源码泄露" class="headerlink" title=".hg源码泄露"></a>.hg源码泄露</h4><h5 id="漏洞成因"><a href="#漏洞成因" class="headerlink" title="漏洞成因"></a>漏洞成因</h5><p><code>hg init</code>的时候会生成<code>.hg</code></p>
-<h5 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h5><p>工具：<a href="https://github.com/kost/dvcs-ripper">dvcs-ripper</a></p>
-<p><code>rip-hg.pl -v -u http://www.example.com/.hg/</code></p>
-<h4 id="git源码泄露"><a href="#git源码泄露" class="headerlink" title=".git源码泄露"></a>.git源码泄露</h4><h5 id="漏洞成因-1"><a href="#漏洞成因-1" class="headerlink" title="漏洞成因"></a>漏洞成因</h5><p>在运行git init初始化代码库的时候，会在当前目录下面产生一个.git的隐藏文件，用来记录代码的变更记录等等。在发布代码的时候，把.git这个目录没有删除，直接发布了。使用这个文件，可以用来恢复源代码。</p>
-<h5 id="漏洞利用-1"><a href="#漏洞利用-1" class="headerlink" title="漏洞利用"></a>漏洞利用</h5><p>工具：<a href="https://github.com/kost/dvcs-ripper">dvcs-ripper</a></p>
-<p><code>rip-git.pl -v -u http://www.example.com/.git/</code></p>
-<h4 id="Ds-Store文件泄露"><a href="#Ds-Store文件泄露" class="headerlink" title=".Ds_Store文件泄露"></a>.Ds_Store文件泄露</h4><h5 id="漏洞成因-2"><a href="#漏洞成因-2" class="headerlink" title="漏洞成因"></a>漏洞成因</h5><p>在发布代码时未删除文件夹中隐藏的.DS_store，被发现后，获取了敏感的文件名等信息。</p>
-<p><code>Eg:http://www.example.com/.ds_store</code></p>
-<h5 id="漏洞利用-2"><a href="#漏洞利用-2" class="headerlink" title="漏洞利用"></a>漏洞利用</h5><p>工具：<a href="https://github.com/lijiejie/ds_store_exp">dsstoreexp</a></p>
-<p><code>python ds_store_exp.py http://www.example.com/.DS_Store</code></p>
-<h4 id="SVN导致文件泄露"><a href="#SVN导致文件泄露" class="headerlink" title="SVN导致文件泄露"></a>SVN导致文件泄露</h4><h5 id="漏洞成因-3"><a href="#漏洞成因-3" class="headerlink" title="漏洞成因"></a>漏洞成因</h5><p>Subversion，简称SVN，是一个开放源代码的版本控制系统，相对于的RCS、CVS，采用了分支管理系统，它的设计目标就是取代CVS。互联网上越来越多的控制服务从CVS转移到Subversion。</p>
-<p>Subversion使用服务端—客户端的结构，当然服务端与客户端可以都运行在同一台服务器上。在服务端是存放着所有受控制数据的Subversion仓库，另一端是Subversion的客户端程序，管理着受控数据的一部分在本地的映射（称为“工作副本”）。在这两端之间，是通过各种仓库存取层（Repository Access，简称RA）的多条通道进行访问的。这些通道中，可以通过不同的网络协议，例如HTTP、SSH等，或本地文件的方式来对仓库进行操作。</p>
-<p><code>Eg: http://vote.lz.taobao.com/admin/scripts/fckeditor.266/editor/.svn/entries</code></p>
-<h5 id="漏洞利用-3"><a href="#漏洞利用-3" class="headerlink" title="漏洞利用"></a>漏洞利用</h5><p>工具：<a href="https://github.com/kost/dvcs-ripper">dvcs-ripper</a></p>
-<p>Seay-Svn</p>
-<h4 id="WEB-INF-web-xml泄露"><a href="#WEB-INF-web-xml泄露" class="headerlink" title="WEB-INF/web.xml泄露"></a>WEB-INF/web.xml泄露</h4>
-        </div>
-        <div class="post-tool">
-            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
-                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
-            </a>
-        </div>
-        
-        <div class="post-tags">标签：
-            
-            <a href="/tags/安全/">安全</a>
-            
-            <a href="/tags/常见漏洞/">常见漏洞</a>
-            
-        </div>
-        
-    </article>
-    
-    <p>本文若有不恰当之处，望不吝赐教</p>
-    
-    
-</div>
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        </div><!-- end #main-->
-    </div><!-- end #body -->
-    <footer class="footer">
-    <div class="footer-inner">
-        <p>
-            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
-            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
-            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
-            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
-            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
-        </p>
-        
-    </div>
-</footer>
-<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-<script src="/js/InsightSearch.js"></script>
-<script src="/js/SimpleCore.js"></script>
-
-</div>
-<div class="fixed-btn">
-    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
-</div>
-<script>
-    $(function () {
-        SimpleCore.init({
-            buildingTime: '08/15/2017',
-            current: $('.post-tags').length > 0 ? 'post' : 'archive',
-            wxMpImg: '/images/weixin-mp.png',
-            donateImg: '/images/donate-qr.png',
-        });
-    });
-</script>
-</body>
-</html>
+block content
+  .autopagerize_page_element: .content: .post-page
+    include mixins
+    +make_post(page, true)
+    .share
+      .evernote
+        a.fa.fa-bookmark(href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();", ref="nofollow", target="_blank")
+      .weibo
+        a.fa.fa-weibo(href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&title=',e(d.title),'&appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));")
+      .twitter
+        a.fa.fa-twitter(href=url_for("http://twitter.com/home?status="+","+config.url+"/"+page.path+","+config.title+","+page.title+",;"))
+    - var prev = page.prev ? page.prev.path : false;
+    - var next = page.next ? page.next.path : false;
+    .pagination
+      ul.clearfix
+        if prev
+          li.pre.pagbuttons
+            a.btn(role="navigation",href=url_for(prev), title=page.prev.title)!= __('prev_post')
+        if next
+          li.next.pagbuttons
+            a.btn(role="navigation",href=url_for(next), title=page.next.title)!= __('next_post')
+    if page.comments
+        include partial/comments
