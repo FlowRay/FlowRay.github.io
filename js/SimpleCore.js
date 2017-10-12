@@ -31,6 +31,8 @@ var SimpleCore = {
             e.preventDefault();
             SimpleCore.switchSearch();
         });
+
+        /*
         $(document).on('click', '.btn-weixin-mp', function (e) {
             e.preventDefault();
             if (SimpleCore.wxMpImg != '') {
@@ -39,14 +41,20 @@ var SimpleCore = {
                 SimpleCore.alert('未开通自定义功能','<h4 style="text-align: center;margin: 0">联系博主试试看 ：）</h4>');
             }
         });
+        */
+
+        /*
         $(document).on('click', '.btn-thumbs-up', function (e) {
             e.preventDefault();
             if (SimpleCore.donateImg != '') {
-                SimpleCore.alert('扫码请我喝可乐','<img style="width:160px;background:#fff;" src="' + SimpleCore.donateImg + '">');
+                SimpleCore.alert('时光如流水','<img style="width:160px;background:#fff;" src="' + SimpleCore.donateImg + '">');
             } else {
                 SimpleCore.alert('未开通自定义功能','<h4 style="text-align: center;margin: 0">联系博主试试看 ：）</h4>');
             }
         });
+        */
+
+
         $(document).on('click', '.btn-gotop', function (e) {
             e.preventDefault();
             SimpleCore.goTop();
@@ -146,8 +154,8 @@ var SimpleCore = {
             $('body').removeClass('night-mode');
             btn.find('i').attr('class', 'fa fa-sun-o');
             $(".cover-img").css({
-                'background': "url('/images/cover-day.jpg')",
-                'background-image': '/images/cover-day.jpg',
+                'background': "url('/images/cover-day1.jpg')",
+                'background-image': '/images/cover-day1.jpg',
                 'background-size': 'cover',
                 'background-position': 'center',
                 'background-repeat': 'no-repeat'
