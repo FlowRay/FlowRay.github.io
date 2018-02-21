@@ -1,0 +1,414 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://flowray.top/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://flowray.top">
+<meta name="author" content="千夜">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/sitetitle.jpg">
+
+
+<title>php文件包含漏洞小结 - 千夜</title>
+
+<meta name="keywords" content="PHP文件包含">
+
+<meta name="description " content="内网穿透小结">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="夜">夜</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/links" title="链接">
+            <i class="fa fa-link"></i>
+            <span>链接</span>
+        </a>
+        
+        
+        <a href="/about" title="关于">
+            <i class="fa fa-user"></i>
+            <span>关于</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">千夜</h1>
+        <h3 class="cover-siteTitle">长路漫漫，踏歌而行</h3>
+        <p class="cover-siteDesc"></p>
+        <div class="cover-sns">
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/secure" data-name="安全">安全</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/program" data-name="编程">编程</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/tool" data-name="工具">工具</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/readThink" data-name="读思">读思</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="flowray.top" target="_blank">
+                    <img width="48" src="/images/sitehead.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="flowray.top" target="_blank">千夜</a>
+                    <span title="最后编辑于2018-02-20">2018-02-20</span>
+                </p>
+                <p>栽下一棵树的最好时间是昨天，其次是现在。</p>
+            </div>
+            <h2 class="post-title">PHP文件包含漏洞小结</h2>
+            <div class="post-meta">
+                本文总共4014个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1 基本概念"></a>1 基本概念</h3><h4 id="1-1相关函数"><a href="#1-1相关函数" class="headerlink" title="1.1相关函数"></a>1.1相关函数</h4><p>php中引发文件包含漏洞的函数通常是以下四个函数：</p>
+<ol>
+<li>include()</li>
+<li>include_once()</li>
+<li>require()</li>
+<li>require_once()</li>
+</ol>
+<p><code>include()</code>包含如果出错，如文件不存在，提出警告然后继续执行。<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/88399107.jpg" alt=""></p>
+<p><code>require()</code>包含文件出错，直接退出。<br><img src="http://ozrtrbf6a.bkt.clouddn.com/18-2-3/17625323.jpg" alt=""></p>
+<p><code>require_once()</code> 和 <code>include_once()</code>与<code>require()</code>和<code>include()</code>功能相似，只是为了防止重复包含。</p>
+<p>当使用这几个函数包含文件时，不管文件是什么类型，都会被解析成php。<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/91956916.jpg" alt=""></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/57317872.jpg" alt=""></p>
+<h4 id="1-2-场景"><a href="#1-2-场景" class="headerlink" title="1.2 场景"></a>1.2 场景</h4><ol>
+<li>具有相关的文件包含函数。</li>
+<li>文件包含函数中存在变量，比如<code>include $file</code>。</li>
+<li>攻击者可以控制变量，比如<code>$file = $_GET[file]</code>。</li>
+</ol>
+<h4 id="1-3-分类"><a href="#1-3-分类" class="headerlink" title="1.3 分类"></a>1.3 分类</h4><h5 id="1-3-1-LFI-本地文件包含"><a href="#1-3-1-LFI-本地文件包含" class="headerlink" title="1.3.1 LFI(本地文件包含)"></a>1.3.1 LFI(本地文件包含)</h5><p>能够打开并包含本地文件的漏洞。</p>
+<h5 id="1-3-2-RFI-远程文件包含"><a href="#1-3-2-RFI-远程文件包含" class="headerlink" title="1.3.2 RFI(远程文件包含)"></a>1.3.2 RFI(远程文件包含)</h5><p>能够包含远程服务器的文件并执行，危害性很，但是需要利用条件。</p>
+<ol>
+<li>allow_url_fopen = On</li>
+<li>allow_url_include = On<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/8227977.jpg" alt=""></li>
+</ol>
+<p>注：<br>当包含远程文件也是php时，php文件会在远程服务器执行。<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/52729123.jpg" alt=""></p>
+<p>在<code>php.ini</code>中，<code>allow_url_fopen</code>默认为<code>On</code>而<code>allow_url_include</code>在php5.2后默认为<code>Off</code>。</p>
+<h3 id="2-包含姿势"><a href="#2-包含姿势" class="headerlink" title="2 包含姿势"></a>2 包含姿势</h3><p>测试代码：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/24783798.jpg" alt=""></p>
+<ol>
+<li>allow_url_fopen = On</li>
+<li>allow_url_include = Off</li>
+</ol>
+<h4 id="2-1-PHP伪协议"><a href="#2-1-PHP伪协议" class="headerlink" title="2.1 PHP伪协议"></a>2.1 PHP伪协议</h4><h5 id="2-1-1-php-input"><a href="#2-1-1-php-input" class="headerlink" title="2.1.1 php://input"></a>2.1.1 php://input</h5><p>利用条件：</p>
+<ol>
+<li>allow_url_include = On</li>
+<li>对allow_url_fopen不做要求。</li>
+</ol>
+<p>姿势：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/96424286.jpg" alt=""></p>
+<h5 id="2-1-2-php-filter"><a href="#2-1-2-php-filter" class="headerlink" title="2.1.2 php://filter"></a>2.1.2 php://filter</h5><p>利用条件：<br>无特别要求。</p>
+<p>姿势：<br><code>http://localhost/test/FileInclude/index.php?file=php://filter/read=convert.base64-encode/resource=info.txt</code></p>
+<p>可以读取base64加密后的文件源码。<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/45495238.jpg" alt=""></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/84457506.jpg" alt=""></p>
+<p>注：<br>少了<code>read</code>关键字。<br><code>http://localhost/test/FileInclude/index.php?file=php://filter/convert.base64-encode/resource=info.txt</code></p>
+<h5 id="2-1-3-phar"><a href="#2-1-3-phar" class="headerlink" title="2.1.3 phar://"></a>2.1.3 phar://</h5><p>利用条件：</p>
+<ol>
+<li>php &gt; 5.3.0</li>
+</ol>
+<p>姿势：<br>假如有个zip压缩包，其中的文件为<code>info.txt</code><br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/35741195.jpg" alt=""><br>相对路径：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/36007480.jpg" alt=""><br>当然也可以使用绝对路径。</p>
+<h5 id="2-1-4-zip"><a href="#2-1-4-zip" class="headerlink" title="2.1.4 zip://"></a>2.1.4 zip://</h5><p>利用条件：</p>
+<ol>
+<li>php &gt;= 5.3.0</li>
+</ol>
+<p>姿势：<br>与phar相同。</p>
+<p>使用zip协议，需要指定绝对路径。同时将<code>#</code>编码为<code>%23</code>。<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/24987303.jpg" alt=""><br>如果时相对路径，那么包含失败</p>
+<h5 id="2-1-5-data-URL-schema"><a href="#2-1-5-data-URL-schema" class="headerlink" title="2.1.5 data:URL schema"></a>2.1.5 data:URL schema</h5><p>利用条件：</p>
+<ol>
+<li>php &gt;= 5.2</li>
+<li>allow_url_fopen = On</li>
+<li>allow_url_include = On</li>
+</ol>
+<p>姿势一：<br><code>http://localhost/test/FileInclude/index.php?file=data://text/plain,&lt;?php phpinfo();?&gt;</code></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/39800264.jpg" alt=""></p>
+<p>执行系统命令：<br><code>http://localhost/test/FileInclude/index.php?file=data://text/plain,&lt;?php system(&#39;whoami&#39;);?&gt;</code></p>
+<p>姿势二：<br><code>http://localhost/test/FileInclude/index.php?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b</code></p>
+<p><code>PD9waHAgcGhwaW5mbygpOz8+</code>的base64解码为<code>&#39;&lt;?php phpinfo();?&gt;</code>,而<code>+</code>的url编码为<code>%2b</code>。</p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/53343984.jpg" alt=""></p>
+<p>执行系统命令：<br><code>http://localhost/test/FileInclude/index.php?file=data://text/plain;base64,PD9waHAgc3lzdGVtKCd3aG9hbWknKTs/Pg==</code></p>
+<p>其中<code>PD9waHAgc3lzdGVtKCd3aG9hbWknKTs/Pg==的base64</code>解码为：<code>&lt;?php system(&#39;whoami&#39;);?&gt;</code></p>
+<h4 id="2-2-包含session"><a href="#2-2-包含session" class="headerlink" title="2.2 包含session"></a>2.2 包含session</h4><p>利用条件：</p>
+<ol>
+<li>session文件路径已知，且其中部分内容可控。</li>
+</ol>
+<p>姿势：<br>php的session文件保存路径可以在phpinfo的session.save_path看到。<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/32157707.jpg" alt=""></p>
+<p>常见的php_session存放位置：</p>
+<ol>
+<li>/var/lib/php/sess_PHPSESSID</li>
+<li>/tmp/sess_PHPSESSID</li>
+<li>/tmp/sessions/sess_PHPSESSID</li>
+</ol>
+<p>session文件的命名格式为sess_[PHPSESSID]。<code>PHPSESSID</code>可以在发送请求的cookie中查到。</p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/52936551.jpg" alt=""></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/83030451.jpg" alt=""></p>
+<p>要包含并利用的话，需要能控制部分sesssion文件的内容。暂时没有通用的办法。有些时候，可以先包含进session文件，观察里面的内容，然后根据里面的字段来发现可控的变量，从而利用变量来写入payload，并之后再次包含从而执行php代码。</p>
+<p>参考文章：</p>
+<h4 id="2-3-包含日志"><a href="#2-3-包含日志" class="headerlink" title="2.3 包含日志"></a>2.3 包含日志</h4><h5 id="2-3-1-访问日志"><a href="#2-3-1-访问日志" class="headerlink" title="2.3.1 访问日志"></a>2.3.1 访问日志</h5><p>利用条件：</p>
+<ol>
+<li>知道服务器日志的存储路径，且日志文件可读。</li>
+</ol>
+<p>姿势：<br>很多时候，web服务器会将请求写入到日志文件中，比如说apache。在用户发起请求时，会将请求写入access.log，当发生错误时将错误写入error.log。默认情况下，日志保存路径在 /var/log/apache2/。</p>
+<p>但如果是直接发起请求，会导致一些符号被编码使得包含无法正确解析。可以使用burp截包后修改。<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/87751522.jpg" alt=""></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/36456954.jpg" alt=""></p>
+<p>包含日志后执行：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/8947299.jpg" alt=""></p>
+<p>在一些场景中，log的地址是被修改掉的。你可以通过读取相应的配置文件后，再进行包含。</p>
+<h5 id="2-3-2-SSH-log"><a href="#2-3-2-SSH-log" class="headerlink" title="2.3.2 SSH log"></a>2.3.2 SSH log</h5><p>利用条件：</p>
+<ol>
+<li>知道ssh-log的位置且可读。默认为<code>/var/log/auth.log</code></li>
+</ol>
+<p>姿势：<br>用ssh远程连接，密码无所谓：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/11811279.jpg" alt=""><br>然后就可以写入php代码：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/93141661.jpg" alt=""><br>利用：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/44302123.jpg" alt=""></p>
+<h4 id="2-4-包含environ"><a href="#2-4-包含environ" class="headerlink" title="2.4 包含environ"></a>2.4 包含environ</h4><p>利用条件：</p>
+<ol>
+<li>php以cgi的方式运行，这样environ才会保持UA头。</li>
+<li>environ文件存储位置已知，且environ文件可读。</li>
+</ol>
+<p>姿势：<br>proc/self/environ中会保存user-agent头。如果在user-agent中插入php代码，则php代码会被写入到environ中。之后再包含它，即可。</p>
+<p>参考：</p>
+<ol>
+<li><a href="https://www.exploit-db.com/papers/12886/">shell via LFI - proc/self/environ method</a></li>
+<li><a href="http://websecuritylog.blogspot.jp/2010/06/procselfenviron-injection.html">The proc/self/environ Injection</a></li>
+</ol>
+<h4 id="2-5-包含fd"><a href="#2-5-包含fd" class="headerlink" title="2.5 包含fd"></a>2.5 包含fd</h4><p>与包含environ类似。<br>参考：</p>
+<ol>
+<li><a href="https://highon.coffee/blog/lfi-cheat-sheet/#procselffd-lfi-method">LFI Cheat Sheet：/proc/self/environ LFI Method</a></li>
+</ol>
+<h4 id="2-6-包含临时文件"><a href="#2-6-包含临时文件" class="headerlink" title="2.6 包含临时文件"></a>2.6 包含临时文件</h4><p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/16693166.jpg" alt=""></p>
+<p>php中上传文件，会创建临时文件。在linux下使用/tmp目录，而在windows下使用c:\winsdows\temp目录。在临时文件被删除之前，利用竞争即可包含该临时文件。</p>
+<p>由于包含需要知道包含的文件名。一种方法是进行暴力猜解，linux下使用的随机函数有缺陷，而window下只有65535中不同的文件名，所以这个方法是可行的。</p>
+<p>另一种方法是配合phpinfo页面的php variables，可以直接获取到上传文件的存储路径和临时文件名，直接包含即可。参考：<a href="https://www.insomniasec.com/downloads/publications/LFI%20With%20PHPInfo%20Assistance.pdf">LFI WITH PHPINFO() ASSISTANCE</a></p>
+<p>类似利用临时文件的存在，竞争时间去包含的，参考：<a href="https://chybeta.github.io/2017/08/22/XMAN%E5%A4%8F%E4%BB%A4%E8%90%A5-2017-babyweb-writeup/">XMAN夏令营-2017-babyweb-writeup</a></p>
+<h4 id="2-7-包含上传文件"><a href="#2-7-包含上传文件" class="headerlink" title="2.7 包含上传文件"></a>2.7 包含上传文件</h4><p>利用条件：</p>
+<ol>
+<li>运乎之妙，存乎一心。知道上传文件在哪，叫啥。</li>
+</ol>
+<p>姿势：<br>配合上传漏洞。</p>
+<h4 id="2-8-其他"><a href="#2-8-其他" class="headerlink" title="2.8 其他"></a>2.8 其他</h4><p>一个web服务往往会用到多个其他服务，比如ftp服务，数据库等等。这些应用也会产生相应的文件，但这就需要具体情况具体分析咯。这里就不展开了。</p>
+<h3 id="3-绕过姿势"><a href="#3-绕过姿势" class="headerlink" title="3 绕过姿势"></a>3 绕过姿势</h3><p>接下来聊聊绕过姿势。平常碰到的情况肯定不会是简简单单的include $_GET[‘file’];这样直接把变量传入包含函数的。在很多时候包含的变量/文件不是完全可控的，比如下面这段代码指定了前缀和后缀：</p>
+<h4 id="3-1-指定前缀"><a href="#3-1-指定前缀" class="headerlink" title="3.1 指定前缀"></a>3.1 指定前缀</h4><p>测试代码：</p>
+<h5 id="3-1-1-目录遍历"><a href="#3-1-1-目录遍历" class="headerlink" title="3.1.1 目录遍历"></a>3.1.1 目录遍历</h5><p>测试代码：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/74648312.jpg" alt=""></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/82335497.jpg" alt=""></p>
+<p>可以使用<code>../</code>进行目录遍历：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/43935551.jpg" alt=""></p>
+<h5 id="3-1-2-编码绕过"><a href="#3-1-2-编码绕过" class="headerlink" title="3.1.2 编码绕过"></a>3.1.2 编码绕过</h5><p>服务器端常常会对于../等做一些过滤，可以用一些编码来进行绕过。下面这些总结来自《白帽子讲Web安全》。</p>
+<ul>
+<li>利用url编码：<ul>
+<li>../<ul>
+<li>..%2f</li>
+<li>%2e%2e%2f</li>
+<li>%2e%2e/</li>
+</ul>
+</li>
+<li>..\<ul>
+<li>%2e%2e%5c</li>
+<li>..%5c</li>
+<li>%2e%2e\</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>二次编码,服务器有可能解码一次<ul>
+<li>../<ul>
+<li>%252e%252e%252f</li>
+</ul>
+</li>
+<li>..\<ul>
+<li>%252e%252e%255c</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>容器/服务器的编码方式<ul>
+<li>../<ul>
+<li>..%c0%af<ul>
+<li>注：</li>
+</ul>
+</li>
+<li>%c0%ae%c0%ae/<ul>
+<li>注：java中会把”%c0%ae”解析为”\uC0AE”，最后转义为ASCCII字符的”.”（点）</li>
+<li>Apache Tomcat Directory Traversal</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>..\<ul>
+<li>..%c1%9c</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-指定后缀"><a href="#3-2-指定后缀" class="headerlink" title="3.2 指定后缀"></a>3.2 指定后缀</h4><p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/30330703.jpg" alt=""></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-3/53453971.jpg" alt=""></p>
+<h5 id="3-2-1-URL"><a href="#3-2-1-URL" class="headerlink" title="3.2.1 URL"></a>3.2.1 URL</h5><p>url格式：<br><code>protocol :// hostname[:port] / path / [;parameters][?query]#fragment</code><br>姿势一：</p>
+<h5 id="3-3-利用协议"><a href="#3-3-利用协议" class="headerlink" title="3.3 利用协议"></a>3.3 利用协议</h5><h5 id="3-3-1-长度截断"><a href="#3-3-1-长度截断" class="headerlink" title="3.3.1 长度截断"></a>3.3.1 长度截断</h5><h5 id="3-3-2-0字节截断"><a href="#3-3-2-0字节截断" class="headerlink" title="3.3.2 0字节截断"></a>3.3.2 0字节截断</h5><h3 id="4-防御方案"><a href="#4-防御方案" class="headerlink" title="4 防御方案"></a>4 防御方案</h3><h4 id="Refference"><a href="#Refference" class="headerlink" title="Refference"></a>Refference</h4>
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/WEB安全/">WEB安全</a>
+            
+            <a href="/tags/文件包含/">文件包含</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文若有不恰当之处，望不吝赐教</p>
+    
+    
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '08/15/2017',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            /*wxMpImg: '/images/weixin-mp.png',*/
+            /*donateImg: '/images/donate-qr.png',*/
+        });
+    });
+</script>
+</body>
+</html>

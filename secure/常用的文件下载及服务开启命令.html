@@ -49,11 +49,11 @@
 <link rel="shortcut icon" href="/images/sitetitle.jpg">
 
 
-<title>hello, world! - 千夜</title>
+<title>常用文件下载及服务开启命令 - 千夜</title>
 
-<meta name="keywords" content="博客第一篇">
+<meta name="keywords" content="文件下载及服务开启命令">
 
-<meta name="description " content="新建博客写的第一篇">
+<meta name="description " content="常用的密码读取工具">
 </head>
 <body>
 <div id="nav">
@@ -103,7 +103,7 @@
         <li><a href="/">最新</a></li>
         
             
-                <li class="">
+                <li class="active">
                     <a href="/categories/secure" data-name="安全">安全</a>
                 </li>
             
@@ -115,7 +115,7 @@
                     <a href="/categories/tool" data-name="工具">工具</a>
                 </li>
             
-                <li class="active">
+                <li class="">
                     <a href="/categories/readThink" data-name="读思">读思</a>
                 </li>
             
@@ -167,19 +167,37 @@
                 </a>
                 <p><span class="label">作者</span>
                     <a href="flowray.top" target="_blank">千夜</a>
-                    <span title="最后编辑于2017-09-29">2017-09-29</span>
+                    <span title="最后编辑于2018-02-21">2018-02-21</span>
                 </p>
                 <p>长路漫漫，踏歌而行</p>
             </div>
-            <h2 class="post-title">Hello, World!</h2>
+            <h2 class="post-title">常用文件下载及服务开启命令</h2>
             <div class="post-meta">
-                本文总共35个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+                本文总共962个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <p>博客一篇……</p>
-<p>博客旨在记录与总结学过的知识，读过的书。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>知行合一</p>
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>在内网渗透中经常需要远程下载脚本、程序及文件，所以总结一下常用的下载命令及开启FTP服务的命令及脚本。</p>
+<h2 id="2-常见下载命令"><a href="#2-常见下载命令" class="headerlink" title="2 常见下载命令"></a>2 常见下载命令</h2><h3 id="2-1-Linux"><a href="#2-1-Linux" class="headerlink" title="2.1 Linux"></a>2.1 Linux</h3><h4 id="2-1-1-wget"><a href="#2-1-1-wget" class="headerlink" title="2.1.1 wget"></a>2.1.1 wget</h4><p>wget可以很方便的下载远程文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">常用参数：</div><div class="line">-e: 断点续传</div><div class="line">-r: 递归下载（目录下所有的文件及子目录）</div><div class="line">-np: 递归下载时不搜索上层目录</div><div class="line">-k: 把绝对链接改为相对链接</div><div class="line">-p: 下载网页需要的全部文件</div></pre></td></tr></table></figure></p>
+<p>下载文件(下载到当前目录)：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-21/61965573.jpg" alt=""></p>
+<p>下载文件夹：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-21/61965573.jpg" alt=""></p>
+<h4 id="2-1-2-curl"><a href="#2-1-2-curl" class="headerlink" title="2.1.2 curl"></a>2.1.2 curl</h4><p>curl是Linux下的另一款下载上传工具。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">常用参数：</div><div class="line">-o 保存下载的文件到指定的文件中</div><div class="line">-C 断点续传</div></pre></td></tr></table></figure></p>
+<p>下载文件：<br><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-21/71117228.jpg" alt=""></p>
+<p>更详细的操作请查看帮助或参考<a href="http://blog.csdn.net/wulong710/article/details/53127606">这里</a>。</p>
+<h3 id="2-2-Windows"><a href="#2-2-Windows" class="headerlink" title="2.2 Windows"></a>2.2 Windows</h3><h4 id="2-2-1-Powershell"><a href="#2-2-1-Powershell" class="headerlink" title="2.2.1 Powershell"></a>2.2.1 Powershell</h4><p>Powershell是一种windows原生的脚本语言，可以实现许多复杂的功能。</p>
+<p>使用如下命令下载文件：<br><code>powershell (New-Object System.Net.WebClient).DownloadFile(&quot;http://127.0.0.1:8888/&quot;, &quot;f:/b.txt&quot;)</code></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-21/27438392.jpg" alt=""></p>
+<p>注意：</p>
+<ol>
+<li>需要指定文件保存路径，若直接指定文件名，那么会直接下载到当前用户的家目录下。</li>
+<li>有的时候PowerShell的执行权限会被关闭，需要使用如下的语句打开。<code>set-executionpolicy unrestricted</code></li>
+</ol>
+<h4 id="2-2-2-BITSAdmin"><a href="#2-2-2-BITSAdmin" class="headerlink" title="2.2.2 BITSAdmin"></a>2.2.2 BITSAdmin</h4><p>BITSAdmin是windows自带的一个用于下载和上传文件的命令行工具，详细使用参数使用<code>bitsadmin /?</code>查看。</p>
+<p>可以使用如下命令来下载文件：<br><code>bitsadmin /transfer MyDownloadJob /download /priority normal http://127.0.0.1:8888/a.txt f:\a.txt</code></p>
+<p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-21/91049381.jpg" alt=""><br><img src="http://ozrtrbf6a.bkt.clouddn.com/18-2-21/28152737.jpg" alt=""></p>
+<h2 id="3-常用的开启服务器的命令"><a href="#3-常用的开启服务器的命令" class="headerlink" title="3 常用的开启服务器的命令"></a>3 常用的开启服务器的命令</h2><h3 id="3-1-Python"><a href="#3-1-Python" class="headerlink" title="3.1 Python"></a>3.1 Python</h3><h4 id="3-1-1-Python3"><a href="#3-1-1-Python3" class="headerlink" title="3.1.1 Python3"></a>3.1.1 Python3</h4><p><code>python3 -m http.server 8080</code></p>
+<h4 id="3-1-2-Python2"><a href="#3-1-2-Python2" class="headerlink" title="3.1.2 Python2"></a>3.1.2 Python2</h4><p><code>python2 -m simpleserver 8080</code></p>
+<h3 id="3-2-Node"><a href="#3-2-Node" class="headerlink" title="3.2 Node"></a>3.2 Node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install http-server -g</div><div class="line">http-server -p 7788</div></pre></td></tr></table></figure>
 
         </div>
         <div class="post-tool">
@@ -190,7 +208,9 @@
         
         <div class="post-tags">标签：
             
-            <a href="/tags/感想/">感想</a>
+            <a href="/tags/渗透技巧/">渗透技巧</a>
+            
+            <a href="/tags/文件下载及服务开启命令/">文件下载及服务开启命令</a>
             
         </div>
         
