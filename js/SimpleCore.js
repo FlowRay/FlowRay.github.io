@@ -144,8 +144,8 @@ var SimpleCore = {
             $('body').addClass('night-mode');
             btn.find('i').attr('class', 'fa fa-moon-o');
             $(".cover-img").css({
-                'background': "url('/images/cover-night.jpg')",
-                'background-image': '/images/cover-night.jpg',
+                'background': "url('/images/cover-night2.jpg')",
+                'background-image': '/images/cover-night2.jpg',
                 'background-size': 'cover',
                 'background-position': 'center',
                 'background-repeat': 'no-repeat'
@@ -154,8 +154,8 @@ var SimpleCore = {
             $('body').removeClass('night-mode');
             btn.find('i').attr('class', 'fa fa-sun-o');
             $(".cover-img").css({
-                'background': "url('/images/cover-day1.jpg')",
-                'background-image': '/images/cover-day1.jpg',
+                'background': "url('/images/cover-day.jpg')",
+                'background-image': '/images/cover-day.jpg',
                 'background-size': 'cover',
                 'background-position': 'center',
                 'background-repeat': 'no-repeat'
