@@ -173,11 +173,11 @@
             </div>
             <h2 class="post-title">内网穿透小结</h2>
             <div class="post-meta">
-                本文总共2986个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+                本文总共3032个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>内网环境非常复杂，在内网中行动需要代理及端口转发等各种功能。</p>
+            <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>内网环境非常复杂，在内网中行动需要代理及端口转发等各种功能。在此梳理一下思路与方法，同时总结一下工具的使用方法。（不断修改中，( •̀ ω •́ )✧)</p>
 <h2 id="2-基本知识概念梳理"><a href="#2-基本知识概念梳理" class="headerlink" title="2 基本知识概念梳理"></a>2 基本知识概念梳理</h2><h3 id="2-1-正向代理与反向代理"><a href="#2-1-正向代理与反向代理" class="headerlink" title="2.1 正向代理与反向代理"></a>2.1 正向代理与反向代理</h3><p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-17/58302339.jpg" alt=""></p>
 <p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-17/98033652.jpg" alt=""></p>
 <p>正向代理中，proxy 和 client 同属一个 LAN，对 server 透明； 反向代理中，proxy 和 server 同属一个 LAN，对 client 透明。 实际上 proxy 在两种代理中做的事都是代为收发请求和响应，不过从结构上来看正好左右互换了下，所以把前者那种代理方式叫做正向代理，后者叫做反向代理。</p>
