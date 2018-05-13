@@ -8,7 +8,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-cn,en,default">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -78,7 +78,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -109,7 +109,7 @@
 <meta property="og:url" content="http://flowray.top/secure/常用的文件下载及服务开启命令.html">
 <meta property="og:site_name" content="千夜">
 <meta property="og:description" content="在内网渗透中常常需要远程下载文件及脚本，在此总结一下常用的文件下载命令及服务开启命令。（不断修改中，( •̀ ω •́ )✧)">
-<meta property="og:locale" content="zh-cn">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-21/61965573.jpg">
 <meta property="og:image" content="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-21/61965573.jpg">
 <meta property="og:image" content="http://myqwerimage.oss-cn-beijing.aliyuncs.com/18-2-21/71117228.jpg">
@@ -177,7 +177,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -226,7 +226,31 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />ホーム</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
   </li>
         
         
@@ -234,16 +258,13 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />アーカイブ</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
       
     </ul>
   
-
-  
-    
 
   
 
@@ -265,6 +286,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -320,14 +344,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2018-02-21 17:55:33" itemprop="dateCreated datePublished" datetime="2018-02-21T17:55:33+08:00">2018-02-21</time>
+              <time title="Created: 2018-02-21 17:55:33" itemprop="dateCreated datePublished" datetime="2018-02-21T17:55:33+08:00">2018-02-21</time>
             
 
             
@@ -344,7 +368,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at：2018-02-22 10:21:34" itemprop="dateModified" datetime="2018-02-22T10:21:34+08:00">2018-02-22</time>
+                <time title="Modified: 2018-02-22 10:21:34" itemprop="dateModified" datetime="2018-02-22T10:21:34+08:00">2018-02-22</time>
               
             
           </span>
@@ -516,10 +540,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            見出し
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            概要
+            Overview
           </li>
         </ul>
       
@@ -540,7 +564,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">13</span>
-                    <span class="site-state-item-name">ポスト</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -561,7 +585,7 @@
                       
                     
                     <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">カテゴリ</span>
+                    <span class="site-state-item-name">categories</span>
                   
                 </div>
               
@@ -608,7 +632,7 @@
                       
                     
                     <span class="site-state-item-count">17</span>
-                    <span class="site-state-item-name">タグ</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -685,7 +709,7 @@
 
 
 
-  <div class="theme-info">テーマ &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.2.0</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
@@ -781,6 +805,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>

@@ -8,7 +8,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-cn,en,default">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -78,7 +78,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -108,7 +108,7 @@
 <meta property="og:url" content="http://flowray.top/index.html">
 <meta property="og:site_name" content="千夜">
 <meta property="og:description" content="千夜的博客">
-<meta property="og:locale" content="zh-cn">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="千夜">
 <meta name="twitter:description" content="千夜的博客">
@@ -168,7 +168,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -218,7 +218,31 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />ホーム</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
   </li>
         
         
@@ -226,16 +250,13 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />アーカイブ</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
       
     </ul>
   
-
-  
-    
 
   
 
@@ -257,6 +278,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -297,7 +321,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/安全/Go学习笔记（一）.html" itemprop="url">
-                  無題
+                  Untitled
                 </a>
               
             
@@ -316,31 +340,19 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2018-05-13 09:11:44" itemprop="dateCreated datePublished" datetime="2018-05-13T09:11:44+08:00">2018-05-13</time>
+              <time title="Created: 2018-05-13 09:11:44 / Modified: 09:27:38" itemprop="dateCreated datePublished" datetime="2018-05-13T09:11:44+08:00">2018-05-13</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at：2018-05-02 17:46:33" itemprop="dateModified" datetime="2018-05-02T17:46:33+08:00">2018-05-02</time>
               
             
           </span>
@@ -374,50 +386,14 @@
 
       
         
-          
-            <h2 id="命名、声明、变量、常量、赋值"><a href="#命名、声明、变量、常量、赋值" class="headerlink" title="命名、声明、变量、常量、赋值"></a>命名、声明、变量、常量、赋值</h2><p>学习了Go，学习书籍是《Go语言圣经》，当把书看完之后，再反过来总结一下学习笔记。</p>
-<h3 id="1-命名"><a href="#1-命名" class="headerlink" title="1. 命名"></a>1. 命名</h3><p>Go的命名规则是一个名字必须以一个字母（Unicode字母） 或下划线开头，后面可以跟任意数量的字母、数字或下划线。 </p>
-<h4 id="1-1-关键字与预定义"><a href="#1-1-关键字与预定义" class="headerlink" title="1.1 关键字与预定义"></a>1.1 关键字与预定义</h4><p>Go中的关键字有25个，不能用于命名：</p>
-<p><img src="http://ozrtrbf6a.bkt.clouddn.com/18-5-1/71017641.jpg" alt=""></p>
-<p>还有大约30多个预定义的名字，比如int和true等，主要对应内建的常量、类型和函数。 </p>
-<p><img src="http://ozrtrbf6a.bkt.clouddn.com/18-5-1/13614897.jpg" alt=""></p>
-<p>注意预定义不是关键字，可以在定义中重新使用。</p>
-<p>下面一个例子中bool被赋值为100， 这样子肯定是不行的，但当加一行代码时就可以了。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> a <span class="keyword">bool</span> = <span class="number">100</span></div><div class="line">	fmt.Println(a)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">type</span> <span class="keyword">bool</span> <span class="keyword">int</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> a <span class="keyword">bool</span> = <span class="number">100</span></div><div class="line">	fmt.Println(a) <span class="comment">//[Print] 100</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="1-2-使用一些奇怪的变量名"><a href="#1-2-使用一些奇怪的变量名" class="headerlink" title="1.2 使用一些奇怪的变量名"></a>1.2 使用一些奇怪的变量名</h4><p>根据Go语言规范，任何Unicode编码的letter字符和下划线都可以作为标识符的第一个字母，之后可以是任意的Unicode的letter字符或者数字。允许的unicode字符为Unicode分类中的Lu、Ll、Lt、Lm、Lo等字符，比如中文、希腊字母等。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	小学生 := <span class="string">"I"</span></div><div class="line">	fmt.Println(小学生)</div><div class="line"></div><div class="line">	ᾖᾁ := <span class="string">"hello"</span></div><div class="line">	fmt.Println(ᾖᾁ)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>尝试一些奇怪的字符：</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">https://en.wikipedia.org/wiki/List_of_Unicode_characters</a></li>
-</ul>
-<h3 id="2-声明"><a href="#2-声明" class="headerlink" title="2. 声明"></a>2. 声明</h3><p>Go语言主要有四种类型的声明语句：var、const、type和func，分别对应变量、常量、类型和函数实体对象的声明。 </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>	a <span class="keyword">int</span> = <span class="number">10</span></div><div class="line">cont a <span class="keyword">int</span> = <span class="number">12</span></div><div class="line"><span class="keyword">type</span> Employee <span class="keyword">struct</span>&#123;</div><div class="line">  Age	<span class="keyword">int</span></div><div class="line">  Name	<span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetAge</span><span class="params">()</span></span>&#123;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="3-变量"><a href="#3-变量" class="headerlink" title="3. 变量"></a>3. 变量</h3><p><code>var</code>声明语句可以创建一个特定类型的变量，然后给变量附加一个名字，并且设置变量的初始值。变量声明的一般语法如下： </p>
-<p><code>var 变量名字 类型 = 表达式</code></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i, j, k <span class="keyword">int</span> <span class="comment">// int, int, int</span></div><div class="line"><span class="keyword">var</span> b, f, s = <span class="literal">true</span>, <span class="number">2.3</span>, <span class="string">"four"</span> <span class="comment">// bool, float64, string</span></div><div class="line"><span class="keyword">var</span> f, err = os.Open(name) <span class="comment">// os.Open returns a file and an error</span></div></pre></td></tr></table></figure>
-<h4 id="3-1-简短声明"><a href="#3-1-简短声明" class="headerlink" title="3.1 简短声明"></a>3.1 简短声明</h4><p>简短变量声明用于声明和初始化局部变量 ，它以“名字:= 表达式”形式声明变量，变量的类型根据表达式来自动推导。 </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">i := <span class="number">100</span></div><div class="line">a, b := <span class="number">100</span>, <span class="number">101</span></div><div class="line">i, j = j, i <span class="comment">//交换i, j的值</span></div></pre></td></tr></table></figure>
-<p>当简短声明一组变量时，如果其中有的变量已经被声明的，那么这个变量将会被赋值。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> a <span class="keyword">int</span> = <span class="number">10</span></div><div class="line"></div><div class="line">	a, b := <span class="number">11</span>, <span class="number">12</span> <span class="comment">// a， 赋值</span></div><div class="line"></div><div class="line">	fmt.Println(a, b)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="3-2-New函数"><a href="#3-2-New函数" class="headerlink" title="3.2 New函数"></a>3.2 New函数</h4><p>另一个创建变量的方法是调用用内建的<code>w</code>函数。表达式new(T)将创建一个T类型的匿名变<br>量，初始化为T类型的零值，然后返回变量地址，返回的指针类型为 <code>*T</code>。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">p := <span class="built_in">new</span>(<span class="keyword">int</span>) <span class="comment">// p, *int 类型, 指向匿名的 int 变量</span></div><div class="line">fmt.Println(*p) <span class="comment">// "0"</span></div><div class="line">*p = <span class="number">2</span> <span class="comment">// 设置 int 匿名变量的值为 2</span></div><div class="line">fmt.Println(*p) <span class="comment">// "2"</span></div></pre></td></tr></table></figure>
-<h4 id="3-3-变量的生命周期"><a href="#3-3-变量的生命周期" class="headerlink" title="3.3 变量的生命周期"></a>3.3 变量的生命周期</h4><p>变量的生命周期指的是在程序运行期间变量有效存在的时间间隔。对于在包一级声明的变量来说，它们的生命周期和整个程序的运行周期是一致的。而相比之下，局部变量的声明周期则是动态的：每次从创建一个新变量的声明语句开始，直到该变量不再被引用为止，然后变量的存储空间可能被回收。函数的参数变量和返回值变量都是局部变量。它们在函数每次被调用的时候创建。 </p>
-<h3 id="4-常量"><a href="#4-常量" class="headerlink" title="4. 常量"></a>4. 常量</h3><p>常量表达式的值在编译期计算，而不是在运行期。每种常量的潜在类型都是基础类型：boolean、string或数字。 </p>
-<p>一个常量的声明语句定义了常量的名字，和变量的声明语法类似，常量的值不可修改，这样可以防止在运行期被意外或恶意的修改。 </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> pi = <span class="number">3.1415926</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> (</div><div class="line">	x = <span class="number">12</span></div><div class="line">  	y = <span class="number">131</span></div><div class="line">)</div></pre></td></tr></table></figure>
-<p>常量间的所有算术运算、逻辑运算和比较运算的结果也是常量，对常量的类型转换操作或以下函数调用都是返回常量结果：len、cap、real、imag、complex和unsafe.Sizeof 。</p>
-<p>如果是批量声明的常量，除了第一个外其它的常量右边的初始化表达式都可以省略，如果省略初始化表达式则表示使用前面常量的初始化表达式写法，对应的常量类型也一样的。例如： </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> (</div><div class="line">	a = <span class="number">1</span></div><div class="line">	b </div><div class="line">	c = <span class="number">2</span></div><div class="line">	d</div><div class="line">) </div><div class="line">fmt.Println(a, b, c, d) <span class="comment">// "1 1 2 2"</span></div></pre></td></tr></table></figure>
-<h4 id="4-1-iota-常量生成器"><a href="#4-1-iota-常量生成器" class="headerlink" title="4.1 iota 常量生成器"></a>4.1 iota 常量生成器</h4><p>常量声明可以使用iota常量生成器初始化，它用于生成一组以相似规则初始化的常量，但是不用每行都写一遍初始化表达式。 在一个const声明语句中，在第一个声明的常量所在的行，iota将会被置为0，然后在每一个有常量声明的行加一，即其他语言中的枚举类型。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">const</span> (</div><div class="line">	a <span class="keyword">int</span> = <span class="literal">iota</span></div><div class="line">	b</div><div class="line">	c</div><div class="line">	d</div><div class="line">	e</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">const</span> (</div><div class="line">	x <span class="keyword">int</span> = <span class="number">1</span> &lt;&lt; <span class="literal">iota</span></div><div class="line">	y</div><div class="line">	z</div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Println(a, b, c, d, e) <span class="comment">// 0, 1, 2, 3, 4</span></div><div class="line">	fmt.Println(x, y, z)       <span class="comment">//1, 2, 4</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="4-2-无类型常量"><a href="#4-2-无类型常量" class="headerlink" title="4.2 无类型常量"></a>4.2 无类型常量</h4><h3 id="5-赋值"><a href="#5-赋值" class="headerlink" title="5. 赋值"></a>5. 赋值</h3><p>使用赋值语句可以更新一个变量的值，最简单的赋值语句是将要被赋值的变量放在=的左边，新值的表达式放在=的右边。 </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">1</span> <span class="comment">// 命名变量的赋值</span></div><div class="line">*p = <span class="literal">true</span> <span class="comment">// 通过指针间接赋值</span></div><div class="line">person.name = <span class="string">"bob"</span> <span class="comment">// 结构体字段赋值</span></div><div class="line">count[x] = count[x] * scale <span class="comment">// 数组、slice或map的元素赋值</span></div></pre></td></tr></table></figure>
-<h4 id="1-元组赋值"><a href="#1-元组赋值" class="headerlink" title="1. 元组赋值"></a>1. 元组赋值</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">i, j, k = <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span></div><div class="line">i, j = j, i	<span class="comment">//交换值</span></div></pre></td></tr></table></figure>
-<p>可以用下划线空白标识符 _ 来丢弃不需要的值。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">_, err = io.Copy(dst, src) <span class="comment">// 丢弃字节数</span></div><div class="line">_, ok = x.(T) <span class="comment">// 只检测类型，忽略具体值</span></div></pre></td></tr></table></figure>
-
-          
+          <h2 id="命名、声明、变量、常量、赋值"><a href="#命名、声明、变量、常量、赋值" class="headerlink" title="命名、声明、变量、常量、赋值"></a>命名、声明、变量、常量、赋值</h2><p>学习了Go，学习书籍是《Go语言圣经》，当把书看完之后，再反过来总结一下学习笔记。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/安全/Go学习笔记（一）.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -508,14 +484,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2018-03-06 13:39:24 / Updated at：19:11:32" itemprop="dateCreated datePublished" datetime="2018-03-06T13:39:24+08:00">2018-03-06</time>
+              <time title="Created: 2018-03-06 13:39:24 / Modified: 19:11:32" itemprop="dateCreated datePublished" datetime="2018-03-06T13:39:24+08:00">2018-03-06</time>
             
 
             
@@ -576,7 +552,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/program/Go Socket编程.html">
-              続きを読む &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -670,14 +646,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2018-02-21 17:55:33" itemprop="dateCreated datePublished" datetime="2018-02-21T17:55:33+08:00">2018-02-21</time>
+              <time title="Created: 2018-02-21 17:55:33" itemprop="dateCreated datePublished" datetime="2018-02-21T17:55:33+08:00">2018-02-21</time>
             
 
             
@@ -694,7 +670,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at：2018-02-22 10:21:34" itemprop="dateModified" datetime="2018-02-22T10:21:34+08:00">2018-02-22</time>
+                <time title="Modified: 2018-02-22 10:21:34" itemprop="dateModified" datetime="2018-02-22T10:21:34+08:00">2018-02-22</time>
               
             
           </span>
@@ -750,7 +726,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/secure/常用的文件下载及服务开启命令.html">
-              続きを読む &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -844,14 +820,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2018-02-21 14:30:05" itemprop="dateCreated datePublished" datetime="2018-02-21T14:30:05+08:00">2018-02-21</time>
+              <time title="Created: 2018-02-21 14:30:05" itemprop="dateCreated datePublished" datetime="2018-02-21T14:30:05+08:00">2018-02-21</time>
             
 
             
@@ -868,7 +844,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at：2018-02-22 10:22:59" itemprop="dateModified" datetime="2018-02-22T10:22:59+08:00">2018-02-22</time>
+                <time title="Modified: 2018-02-22 10:22:59" itemprop="dateModified" datetime="2018-02-22T10:22:59+08:00">2018-02-22</time>
               
             
           </span>
@@ -924,7 +900,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/tool/Empire使用小结.html">
-              続きを読む &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1018,14 +994,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2018-02-21 14:29:46 / Updated at：14:35:39" itemprop="dateCreated datePublished" datetime="2018-02-21T14:29:46+08:00">2018-02-21</time>
+              <time title="Created: 2018-02-21 14:29:46 / Modified: 14:35:39" itemprop="dateCreated datePublished" datetime="2018-02-21T14:29:46+08:00">2018-02-21</time>
             
 
             
@@ -1086,7 +1062,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/tool/Powersploit使用小结.html">
-              続きを読む &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1180,14 +1156,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2018-02-20 16:41:15" itemprop="dateCreated datePublished" datetime="2018-02-20T16:41:15+08:00">2018-02-20</time>
+              <time title="Created: 2018-02-20 16:41:15" itemprop="dateCreated datePublished" datetime="2018-02-20T16:41:15+08:00">2018-02-20</time>
             
 
             
@@ -1204,7 +1180,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at：2018-02-28 13:23:43" itemprop="dateModified" datetime="2018-02-28T13:23:43+08:00">2018-02-28</time>
+                <time title="Modified: 2018-02-28 13:23:43" itemprop="dateModified" datetime="2018-02-28T13:23:43+08:00">2018-02-28</time>
               
             
           </span>
@@ -1260,7 +1236,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/secure/PHP文件包含漏洞.html">
-              続きを読む &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1354,14 +1330,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2018-02-20 16:15:59" itemprop="dateCreated datePublished" datetime="2018-02-20T16:15:59+08:00">2018-02-20</time>
+              <time title="Created: 2018-02-20 16:15:59" itemprop="dateCreated datePublished" datetime="2018-02-20T16:15:59+08:00">2018-02-20</time>
             
 
             
@@ -1378,7 +1354,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at：2018-02-27 22:17:00" itemprop="dateModified" datetime="2018-02-27T22:17:00+08:00">2018-02-27</time>
+                <time title="Modified: 2018-02-27 22:17:00" itemprop="dateModified" datetime="2018-02-27T22:17:00+08:00">2018-02-27</time>
               
             
           </span>
@@ -1434,7 +1410,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/secure/内网代理与转发小结.html">
-              続きを読む &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1528,14 +1504,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2017-11-02 21:45:41" itemprop="dateCreated datePublished" datetime="2017-11-02T21:45:41+08:00">2017-11-02</time>
+              <time title="Created: 2017-11-02 21:45:41" itemprop="dateCreated datePublished" datetime="2017-11-02T21:45:41+08:00">2017-11-02</time>
             
 
             
@@ -1552,7 +1528,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at：2017-11-22 00:15:25" itemprop="dateModified" datetime="2017-11-22T00:15:25+08:00">2017-11-22</time>
+                <time title="Modified: 2017-11-22 00:15:25" itemprop="dateModified" datetime="2017-11-22T00:15:25+08:00">2017-11-22</time>
               
             
           </span>
@@ -1608,7 +1584,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/program/位运算常见问题.html">
-              続きを読む &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1702,14 +1678,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2017-09-30 10:34:25" itemprop="dateCreated datePublished" datetime="2017-09-30T10:34:25+08:00">2017-09-30</time>
+              <time title="Created: 2017-09-30 10:34:25" itemprop="dateCreated datePublished" datetime="2017-09-30T10:34:25+08:00">2017-09-30</time>
             
 
             
@@ -1726,7 +1702,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at：2018-02-22 10:28:20" itemprop="dateModified" datetime="2018-02-22T10:28:20+08:00">2018-02-22</time>
+                <time title="Modified: 2018-02-22 10:28:20" itemprop="dateModified" datetime="2018-02-22T10:28:20+08:00">2018-02-22</time>
               
             
           </span>
@@ -1782,7 +1758,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/tool/nmap小结.html">
-              続きを読む &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1876,14 +1852,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2017-09-29 23:51:51 / Updated at：23:53:27" itemprop="dateCreated datePublished" datetime="2017-09-29T23:51:51+08:00">2017-09-29</time>
+              <time title="Created: 2017-09-29 23:51:51 / Modified: 23:53:27" itemprop="dateCreated datePublished" datetime="2017-09-29T23:51:51+08:00">2017-09-29</time>
             
 
             
@@ -1944,7 +1920,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/tool/密码读取.html">
-              続きを読む &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -2032,7 +2008,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">13</span>
-                    <span class="site-state-item-name">ポスト</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -2053,7 +2029,7 @@
                       
                     
                     <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">カテゴリ</span>
+                    <span class="site-state-item-name">categories</span>
                   
                 </div>
               
@@ -2100,7 +2076,7 @@
                       
                     
                     <span class="site-state-item-count">17</span>
-                    <span class="site-state-item-name">タグ</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -2161,7 +2137,7 @@
 
 
 
-  <div class="theme-info">テーマ &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.2.0</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
@@ -2257,6 +2233,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
 
   
 

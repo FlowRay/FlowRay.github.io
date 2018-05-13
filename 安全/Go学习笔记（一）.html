@@ -8,7 +8,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-cn,en,default">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -78,7 +78,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -102,19 +102,19 @@
 
 
 
-  <meta name="description" content="命名、声明、变量、常量、赋值学习了Go，学习书籍是《Go语言圣经》，当把书看完之后，再反过来总结一下学习笔记。 1. 命名Go的命名规则是一个名字必须以一个字母（Unicode字母） 或下划线开头，后面可以跟任意数量的字母、数字或下划线。  1.1 关键字与预定义Go中的关键字有25个，不能用于命名：  还有大约30多个预定义的名字，比如int和true等，主要对应内建的常量、类型和函数。   注">
+  <meta name="description" content="命名、声明、变量、常量、赋值学习了Go，学习书籍是《Go语言圣经》，当把书看完之后，再反过来总结一下学习笔记。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="千夜">
 <meta property="og:url" content="http://flowray.top/安全/Go学习笔记（一）.html">
 <meta property="og:site_name" content="千夜">
-<meta property="og:description" content="命名、声明、变量、常量、赋值学习了Go，学习书籍是《Go语言圣经》，当把书看完之后，再反过来总结一下学习笔记。 1. 命名Go的命名规则是一个名字必须以一个字母（Unicode字母） 或下划线开头，后面可以跟任意数量的字母、数字或下划线。  1.1 关键字与预定义Go中的关键字有25个，不能用于命名：  还有大约30多个预定义的名字，比如int和true等，主要对应内建的常量、类型和函数。   注">
-<meta property="og:locale" content="zh-cn">
+<meta property="og:description" content="命名、声明、变量、常量、赋值学习了Go，学习书籍是《Go语言圣经》，当把书看完之后，再反过来总结一下学习笔记。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ozrtrbf6a.bkt.clouddn.com/18-5-1/71017641.jpg">
 <meta property="og:image" content="http://ozrtrbf6a.bkt.clouddn.com/18-5-1/13614897.jpg">
-<meta property="og:updated_time" content="2018-05-02T09:46:33.905Z">
+<meta property="og:updated_time" content="2018-05-13T01:27:38.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="千夜">
-<meta name="twitter:description" content="命名、声明、变量、常量、赋值学习了Go，学习书籍是《Go语言圣经》，当把书看完之后，再反过来总结一下学习笔记。 1. 命名Go的命名规则是一个名字必须以一个字母（Unicode字母） 或下划线开头，后面可以跟任意数量的字母、数字或下划线。  1.1 关键字与预定义Go中的关键字有25个，不能用于命名：  还有大约30多个预定义的名字，比如int和true等，主要对应内建的常量、类型和函数。   注">
+<meta name="twitter:description" content="命名、声明、变量、常量、赋值学习了Go，学习书籍是《Go语言圣经》，当把书看完之后，再反过来总结一下学习笔记。">
 <meta name="twitter:image" content="http://ozrtrbf6a.bkt.clouddn.com/18-5-1/71017641.jpg">
 
 
@@ -172,7 +172,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -221,7 +221,31 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />ホーム</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
   </li>
         
         
@@ -229,16 +253,13 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />アーカイブ</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
       
     </ul>
   
-
-  
-    
 
   
 
@@ -260,6 +281,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -315,31 +339,19 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="作成された時間：2018-05-13 09:11:44" itemprop="dateCreated datePublished" datetime="2018-05-13T09:11:44+08:00">2018-05-13</time>
+              <time title="Created: 2018-05-13 09:11:44 / Modified: 09:27:38" itemprop="dateCreated datePublished" datetime="2018-05-13T09:11:44+08:00">2018-05-13</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at：2018-05-02 17:46:33" itemprop="dateModified" datetime="2018-05-02T17:46:33+08:00">2018-05-02</time>
               
             
           </span>
@@ -373,6 +385,7 @@
 
       
         <h2 id="命名、声明、变量、常量、赋值"><a href="#命名、声明、变量、常量、赋值" class="headerlink" title="命名、声明、变量、常量、赋值"></a>命名、声明、变量、常量、赋值</h2><p>学习了Go，学习书籍是《Go语言圣经》，当把书看完之后，再反过来总结一下学习笔记。</p>
+<a id="more"></a>
 <h3 id="1-命名"><a href="#1-命名" class="headerlink" title="1. 命名"></a>1. 命名</h3><p>Go的命名规则是一个名字必须以一个字母（Unicode字母） 或下划线开头，后面可以跟任意数量的字母、数字或下划线。 </p>
 <h4 id="1-1-关键字与预定义"><a href="#1-1-关键字与预定义" class="headerlink" title="1.1 关键字与预定义"></a>1.1 关键字与预定义</h4><p>Go中的关键字有25个，不能用于命名：</p>
 <p><img src="http://ozrtrbf6a.bkt.clouddn.com/18-5-1/71017641.jpg" alt=""></p>
@@ -499,10 +512,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            見出し
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            概要
+            Overview
           </li>
         </ul>
       
@@ -523,7 +536,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">13</span>
-                    <span class="site-state-item-name">ポスト</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -544,7 +557,7 @@
                       
                     
                     <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">カテゴリ</span>
+                    <span class="site-state-item-name">categories</span>
                   
                 </div>
               
@@ -591,7 +604,7 @@
                       
                     
                     <span class="site-state-item-count">17</span>
-                    <span class="site-state-item-name">タグ</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -668,7 +681,7 @@
 
 
 
-  <div class="theme-info">テーマ &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.2.0</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
@@ -764,6 +777,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
